@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ordinary Machines</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -15,15 +15,16 @@
       --border: #e0e0e0;
       --mono: 'IBM Plex Mono', monospace;
       --sans: 'IBM Plex Sans', sans-serif;
+      --serif: 'Lora', serif;
     }
     body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-weight: 300; }
     nav { display: flex; justify-content: space-between; align-items: center; padding: 2rem 2.5rem; border-bottom: 1px solid var(--border); }
-    .logo { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: 0.02em; }
+    .logo { font-family: var(--serif); font-size: 15px; font-weight: 400; letter-spacing: 0.01em; }
     .nav-links { display: flex; gap: 2rem; }
     .nav-links a { font-size: 13px; color: var(--fg2); text-decoration: none; }
     .nav-links a:hover { color: var(--fg); }
     .hero { padding: 5rem 2.5rem 4rem; max-width: 680px; }
-    .hero h1 { font-family: var(--mono); font-size: clamp(22px, 4vw, 36px); font-weight: 400; line-height: 1.3; margin-bottom: 1.5rem; letter-spacing: -0.01em; }
+    .hero h1 { font-family: var(--serif); font-size: clamp(24px, 4vw, 38px); font-weight: 400; line-height: 1.3; margin-bottom: 1.5rem; letter-spacing: -0.01em; }
     .hero p { font-size: 15px; color: var(--fg2); line-height: 1.8; max-width: 520px; margin-bottom: 2.5rem; }
     .divider { height: 1px; background: var(--border); margin: 0 2.5rem; }
     .services { padding: 0 2.5rem 4rem; }
@@ -32,6 +33,32 @@
     .service:last-child { border-right: none; margin-right: 0; padding-right: 0; }
     .service-label { font-family: var(--mono); font-size: 11px; color: var(--fg2); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
     .service p { font-size: 13px; color: var(--fg2); line-height: 1.7; }
+
+    /* ── Ticker ── */
+    .ticker-section { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden; }
+    .ticker-label { font-family: var(--mono); font-size: 11px; color: var(--fg2); letter-spacing: 0.08em; text-transform: uppercase; padding: 1.5rem 2.5rem 1rem; }
+    .ticker-wrap { overflow: hidden; }
+    .ticker-track { display: flex; align-items: center; width: max-content; animation: ticker 36s linear infinite; padding: 1.25rem 0 2rem; }
+    .ticker-item { display: flex; align-items: center; justify-content: center; padding: 0 1.25rem; border-right: 1px solid var(--border); height: 28px; }
+    .ticker-item img {
+      height: 20px;
+      width: auto;
+      max-width: 80px;
+      object-fit: contain;
+      filter: grayscale(100%) opacity(0.4);
+    }
+    .ticker-item .fallback {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: #999;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
     .about { padding: 3rem 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
     .about-label { font-family: var(--mono); font-size: 11px; color: var(--fg2); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem; }
     .about p { font-size: 13px; color: var(--fg2); line-height: 1.8; }
@@ -55,16 +82,11 @@
 
 <nav>
   <span class="logo">Ordinary Machines</span>
-  <!-- <div class="nav-links">
-    <a href="#">Work</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-  </div> -->
 </nav>
 
 <div class="hero">
-  <h1>ML systems built<br>from first principles.</h1>
-  <p>We work with teams building serious ML systems — from experimental design to production. Research-native, engineering-complete. No handoffs.</p>
+  <h1>Enterprise intelligence built from first principles.</h1>
+  <p>We work with teams deploying serious ML systems, providing services from pretraining infrastructure to model safety assessments. Asynchronous, project-based engagements.</p>
   <a class="cta" href="mailto:hello@ordinarymachines.com">Get in touch →</a>
 </div>
 
@@ -74,35 +96,39 @@
   <div class="services-grid">
     <div class="service">
       <div class="service-label">Development</div>
-      <p>ML architecture, model integration, and production pipelines.</p>
+      <p>Architecture design, model integration, and production finetuning.</p>
     </div>
     <div class="service">
       <div class="service-label">Data</div>
-      <p>Dataset curation, annotation, preprocessing, and synthetic generation.</p>
+      <p>Pretraining infrastructure, data annotation, and insight analytics.</p>
     </div>
     <div class="service">
       <div class="service-label">Evals</div>
-      <p>Benchmark design, RLHF annotation, and model behavior analysis.</p>
+      <p>Benchmark design, red teaming, and model behavioral evaluations.</p>
     </div>
     <div class="service">
       <div class="service-label">Research</div>
-      <p>Applied ML research with implementation that ships.</p>
+      <p>Bridging technical alignment science with real-world deployment.</p>
     </div>
   </div>
 </div>
-
-<div class="divider"></div>
 
 <div class="about">
   <div>
     <div class="about-label">About</div>
-    <p>Ordinary Machines works alongside teams where the research-engineering boundary is blurry by design. We embed in the problem, not the org chart.</p>
+    <p>Ordinary Machines operates at the edge of frontier intelligence, developing and aligning powerful models for enterprise clients. </p>
   </div>
-  <!-- <div>
-    <div class="about-label">Background</div>
-    <p>Research at the PUSH Lab, Amherst College — publications in evolutionary algorithms and artificial life. That background shapes how every system gets built.</p>
-  </div> -->
 </div>
+
+<!-- ── Stack & Partners Ticker ── -->
+<div class="ticker-section">
+  <div class="ticker-label">Stack &amp; Partners</div>
+  <div class="ticker-wrap">
+    <div class="ticker-track" id="ticker"></div>
+  </div>
+</div>
+
+<div class="divider"></div>
 
 <div class="contact">
   <div class="contact-label">Contact</div>
@@ -116,6 +142,44 @@
   <span>Ordinary Machines LLC</span>
   <span>© 2026</span>
 </footer>
+
+<script>
+  // [alt text, Clearbit logo domain]
+  const logos = [
+    ["Anthropic",        "anthropic.com"],
+    ["OpenAI",           "openai.com"],
+    ["HuggingFace",      "huggingface.co"],
+    ["AWS",              "aws.amazon.com"],
+    ["Modal",            "modal.com"],
+    ["Weights & Biases", "wandb.ai"],
+    ["Docker",           "docker.com"],
+    ["PyTorch",          "pytorch.org"],
+    ["Pinecone",         "pinecone.io"],
+    ["GitHub",           "github.com"],
+  ];
+
+  const track = document.getElementById('ticker');
+
+  function makeItem([alt, domain]) {
+    const item = document.createElement('div');
+    item.className = 'ticker-item';
+    const img = document.createElement('img');
+    img.src = `https://logo.clearbit.com/${domain}`;
+    img.alt = alt;
+    img.loading = 'lazy';
+    img.onerror = function () {
+      const span = document.createElement('span');
+      span.className = 'fallback';
+      span.textContent = alt;
+      item.replaceChild(span, img);
+    };
+    item.appendChild(img);
+    return item;
+  }
+
+  // Duplicate for seamless infinite loop
+  [...logos, ...logos].forEach(l => track.appendChild(makeItem(l)));
+</script>
 
 </body>
 </html>
