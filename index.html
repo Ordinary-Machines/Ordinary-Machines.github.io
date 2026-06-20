@@ -5,181 +5,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ordinary Machines</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     :root {
-      --fg: #0a0a0a;
-      --fg2: #555;
-      --bg: #fafafa;
-      --border: #e0e0e0;
-      --mono: 'IBM Plex Mono', monospace;
-      --sans: 'IBM Plex Sans', sans-serif;
-      --serif: 'Lora', serif;
+      --cream: #f5f0e8;
+      --azure: #111210;
+      --mid: #6b6b68;
+      --rule: #2a2a28;
     }
-    body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-weight: 300; }
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 2rem 2.5rem; border-bottom: 1px solid var(--border); }
-    .logo { font-family: var(--serif); font-size: 15px; font-weight: 400; letter-spacing: 0.01em; }
-    .nav-links { display: flex; gap: 2rem; }
-    .nav-links a { font-size: 13px; color: var(--fg2); text-decoration: none; }
-    .nav-links a:hover { color: var(--fg); }
-    .hero { padding: 5rem 2.5rem 4rem; max-width: 680px; }
-    .hero h1 { font-family: var(--serif); font-size: clamp(24px, 4vw, 38px); font-weight: 400; line-height: 1.3; margin-bottom: 1.5rem; letter-spacing: -0.01em; }
-    .hero p { font-size: 15px; color: var(--fg2); line-height: 1.8; max-width: 520px; margin-bottom: 2.5rem; }
-    .divider { height: 1px; background: var(--border); margin: 0 2.5rem; }
-    .services { padding: 0 2.5rem 4rem; }
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; margin-top: 0; }
-    .service { padding: 2rem 2rem 2rem 0; border-right: 1px solid var(--border); margin-right: 2rem; }
-    .service:last-child { border-right: none; margin-right: 0; padding-right: 0; }
-    .service-label { font-family: var(--mono); font-size: 11px; color: var(--fg2); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
-    .service p { font-size: 13px; color: var(--fg2); line-height: 1.7; }
 
-    /* ── Ticker ── */
-    .ticker-section { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden; }
-    .ticker-label { font-family: var(--mono); font-size: 11px; color: var(--fg2); letter-spacing: 0.08em; text-transform: uppercase; padding: 1.5rem 2.5rem 1rem; }
-    .ticker-wrap { overflow: hidden; }
-    .ticker-track { display: flex; align-items: center; width: max-content; animation: ticker 36s linear infinite; padding: 1.25rem 0 2rem; }
-    .ticker-item { display: flex; align-items: center; justify-content: center; padding: 0 1.25rem; border-right: 1px solid var(--border); height: 28px; }
-    .ticker-item img {
-      height: 20px;
-      width: auto;
-      max-width: 80px;
-      object-fit: contain;
-      filter: grayscale(100%) opacity(0.4);
+    html, body {
+      height: 100%;
     }
-    .ticker-item .fallback {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: #999;
+
+    body {
+      background-color: var(--azure);
+      color: var(--cream);
+      font-family: 'Libre Baskerville', Georgia, serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 3rem 2rem;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 560px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* Footer row */
+    .footer {
+      margin-top: 3.2rem;
+    }
+    .wordmark {
+      font-size: clamp(2rem, 6vw, 2.8rem);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      color: var(--cream);
+    }
+
+    /* Rule */
+    .rule {
+      height: 1px;
+      background-color: var(--rule);
+      margin: 1.8rem 0;
+      width: 100%;
+    }
+
+    /* Mission */
+    .mission {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--cream);
+      font-weight: 400;
+      max-width: 480px;
+    }
+
+    /* Footer row */
+    .footer {
+      margin-top: 3.2rem;
+    }
+
+    .contact a {
+      font-size: 0.82rem;
+      color: var(--cream);
+      text-decoration: none;
       letter-spacing: 0.04em;
-      white-space: nowrap;
-    }
-    @keyframes ticker {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1px;
+      transition: border-color 0.2s ease;
     }
 
-    .about { padding: 3rem 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-    .about-label { font-family: var(--mono); font-size: 11px; color: var(--fg2); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem; }
-    .about p { font-size: 13px; color: var(--fg2); line-height: 1.8; }
-    .contact { padding: 3rem 2.5rem; border-top: 1px solid var(--border); }
-    .contact-label { font-family: var(--mono); font-size: 11px; color: var(--fg2); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.25rem; }
-    .contact-row { display: flex; gap: 2.5rem; align-items: center; }
-    .contact a { font-family: var(--mono); font-size: 13px; color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--border); }
-    .contact a:hover { border-color: var(--fg); }
-    footer { padding: 1.5rem 2.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-    footer span { font-family: var(--mono); font-size: 11px; color: var(--fg2); }
-    .cta { display: inline-block; font-family: var(--mono); font-size: 12px; border: 1px solid var(--fg); padding: 0.6rem 1.25rem; text-decoration: none; color: var(--fg); letter-spacing: 0.03em; }
-    .cta:hover { background: var(--fg); color: var(--bg); }
-    @media (max-width: 560px) {
-      .about { grid-template-columns: 1fr; }
-      .service { border-right: none; border-bottom: 1px solid var(--border); padding: 1.5rem 0; margin: 0; }
-      .nav-links { gap: 1rem; }
+    .contact a:hover {
+      border-color: var(--cream);
     }
+
   </style>
 </head>
 <body>
-
-<nav>
-  <span class="logo">Ordinary Machines</span>
-</nav>
-
-<div class="hero">
-  <h1>Enterprise intelligence built from first principles.</h1>
-  <p>We work with teams deploying serious ML systems, providing services from pretraining infrastructure to model safety assessments. Asynchronous, project-based engagements.</p>
-  <a class="cta" href="mailto:hello@ordinarymachines.com">Get in touch →</a>
-</div>
-
-<div class="divider"></div>
-
-<div class="services">
-  <div class="services-grid">
-    <div class="service">
-      <div class="service-label">Development</div>
-      <p>Architecture design, model integration, and production finetuning.</p>
+  <main class="page">
+    <h1 class="wordmark">Ordinary Machines</h1>
+    <div class="rule"></div>
+    <p class="mission">
+      We conduct independent research on safety and societal impact of artificial intelligence.
+      We partner with businesses, governments, and organizations navigating consequential decisions
+      about superintelligence.
+    </p>
+    <div class="footer">
+      <span class="contact"><a href="mailto:hello@ordinarymachines.com">hello@ordinarymachines.com</a></span>
     </div>
-    <div class="service">
-      <div class="service-label">Data</div>
-      <p>Pretraining infrastructure, data annotation, and insight analytics.</p>
-    </div>
-    <div class="service">
-      <div class="service-label">Evals</div>
-      <p>Benchmark design, red teaming, and model behavioral evaluations.</p>
-    </div>
-    <div class="service">
-      <div class="service-label">Research</div>
-      <p>Bridging technical alignment science with real-world deployment.</p>
-    </div>
-  </div>
-</div>
-
-<div class="about">
-  <div>
-    <div class="about-label">About</div>
-    <p>Ordinary Machines operates at the edge of frontier intelligence, developing and aligning powerful models for enterprise clients. </p>
-  </div>
-</div>
-
-<!-- ── Stack & Partners Ticker ── -->
-<div class="ticker-section">
-  <div class="ticker-label">Stack &amp; Partners</div>
-  <div class="ticker-wrap">
-    <div class="ticker-track" id="ticker"></div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<div class="contact">
-  <div class="contact-label">Contact</div>
-  <div class="contact-row">
-    <a href="mailto:hello@ordinarymachines.com">hello@ordinarymachines.com</a>
-    <a href="https://www.linkedin.com/in/nikolorantos/">LinkedIn</a>
-  </div>
-</div>
-
-<footer>
-  <span>Ordinary Machines LLC</span>
-  <span>© 2026</span>
-</footer>
-
-<script>
-  // [alt text, Clearbit logo domain]
-  const logos = [
-    ["Anthropic",        "anthropic.com"],
-    ["OpenAI",           "openai.com"],
-    ["HuggingFace",      "huggingface.co"],
-    ["AWS",              "aws.amazon.com"],
-    ["Modal",            "modal.com"],
-    ["Weights & Biases", "wandb.ai"],
-    ["Docker",           "docker.com"],
-    ["PyTorch",          "pytorch.org"],
-    ["Pinecone",         "pinecone.io"],
-    ["GitHub",           "github.com"],
-  ];
-
-  const track = document.getElementById('ticker');
-
-  function makeItem([alt, domain]) {
-    const item = document.createElement('div');
-    item.className = 'ticker-item';
-    const img = document.createElement('img');
-    img.src = `https://logo.clearbit.com/${domain}`;
-    img.alt = alt;
-    img.loading = 'lazy';
-    img.onerror = function () {
-      const span = document.createElement('span');
-      span.className = 'fallback';
-      span.textContent = alt;
-      item.replaceChild(span, img);
-    };
-    item.appendChild(img);
-    return item;
-  }
-
-  // Duplicate for seamless infinite loop
-  [...logos, ...logos].forEach(l => track.appendChild(makeItem(l)));
-</script>
-
+  </main>
 </body>
 </html>
